@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>SMBG - Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="Css.css" />
+    </h:head>
+    <h:body>
+        <div id="divTexto"> 
+
+            <div id="loginSenha">
+
+                <h:form >
+                    
+                    <h1 id="textoLogin"> Login </h1>
+                    <h5 id="textoDentroLogin"> Seja bem-vindo ao SMBG</h5>
+
+                    <h:panelGrid columns="2" style="left: 6%; top: 100px; position: relative">
+
+                        <h:outputLabel value="Login: " for="NomeLogin" />
+                        <br></br>
+                        <h:inputText id="NomeLogin" value="#{controllerSessaoUsuario.usuario.login}"/>
+                        <br></br><br></br>
+
+                        <h:outputLabel value="Senha: " for="NomeSenha" />
+                        <br></br>
+                        <h:inputSecret id= "NomeSenha" value="#{controllerSessaoUsuario.usuario.senha}"/>
+                        <br></br><br></br>
+
+                        <h:commandButton value="Logar" action="#{controllerSessaoUsuario.logar()}"/>
+
+                    </h:panelGrid>
+                </h:form>
+            </div>
+
+            <div id="apresentacaoLogin">
+                
+                <h2 id="textoLoginDaDiv2"> Seja Bem vindo! </h2>
+                <h:graphicImage id="menuDoLogin" library="imagem" name="imgMenu.png"/>
+                <h5 id="textoLoginDeDentroDiv2">O Sistema de Monitoramento de Busão de Garanhuns agradece o seu login em nosso sistema!</h5>	
+
+            </div>
+
+        </div>
+    </h:body>
+</html>

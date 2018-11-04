@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SMBG Funcionario</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="Css.css" />
+
+    </h:head>
+    <h:body>
+
+        <div id="faixa">
+            <h1 id="textoFaixa">SMBG</h1>
+            <h5 id="bemVindoUsuario"> Seja Bem-Vindo </h5>
+        </div>
+
+        <h:graphicImage id="menu" library="imagem" name="imgMenu.png"/>
+
+        <h:form>
+            <div id="botoes">
+                <p:commandButton value="Cadastrar" action = "#{controllerPaginaAdminitrador.irCadastrarFuncionario()}"/>
+
+                <p:commandButton value="Menu" action="#{controllerPaginaAdminitrador.irPaginaAdmin()}"/> 
+                
+                <p:commandButton value="Buscar" action="#{controllerPaginaAdminitrador.irBuscarFuncionario()}"/>    
+                
+                <p:commandButton value="Deslogar" action="#{controllerSessaoUsuario.deslogar()}"/>    
+
+            </div>
+        </h:form>
+
+        <h:form id="lista">
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
+            <p:dataTable id="dtFuncionario" value="#{controllerFuncionarioSMBG.listaTodos()}" var="funcionario">
+
+                <p:column headerText="Nome">
+                    <h:outputText value="#{funcionario.funcionarioIdentidade.nome}" />
+                </p:column>
+
+                <p:column headerText="Numero Identidade">
+                    <h:outputText value="#{funcionario.funcionarioIdentidade.numeroIdentidade}" />
+                </p:column>
+
+                <p:column headerText="Nome da mãe">
+                    <h:outputText value="#{funcionario.funcionarioIdentidade.nomeDaMae}" />
+                </p:column>
+
+                <p:column headerText="CPF">
+                    <h:outputText value="#{funcionario.cpf}" />
+                </p:column>
+
+                <p:column headerText="Função">
+                    <h:outputText value="#{funcionario.admissao.funcao}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Ações"/>
+                    </f:facet>
+                    <h:commandLink value="Remover" action="#{controllerFuncionarioSMBG.removerFuncionario()}"
+                                   onclick="if (!confirm('Deseja realmente remover este funcionário?')) {
+                                               return false;
+                                           }">
+                        <f:setPropertyActionListener value="#{funcionario}" target="#{controllerFuncionarioSMBG.funcionario}"/>
+                    </h:commandLink>
+
+                    <br/>
+                    <p:commandLink  value="Editar"  oncomplete="PF('alterarFuncionarioDialog').show()" update=":dialogAlterar">
+                        <f:setPropertyActionListener value="#{funcionario}" target="#{controllerFuncionarioSMBG.funcionario}"/>
+                    </p:commandLink>
+                </p:column>
+
+            </p:dataTable>
+            </h:form>
+        
+            <p:dialog id="dialogAlterar"  header="Alterar Funcionario" widgetVar="alterarFuncionarioDialog" modal="true" height="500" draggable="false">
+                <h:form>
+                <h:panelGrid columns="2" >
+                    
+                    <p:outputLabel value="Nome:*" for="NomeIdentidadeFuncionario" />
+                    <p:inputText id="NomeIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.nome}"/>
+
+                    <p:outputLabel value="Número RG:*" for="NumeroIdentidadeFuncionario"/>
+                    <p:inputText id="NumeroIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.numeroIdentidade}" />
+
+                    <p:outputLabel value="Órgão Emissor:*" for="OrgaoEmissorIdentidadeFuncionario"/>
+                    <p:inputText id="OrgaoEmissorIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.orgaoEmissor}" />
+
+                    <p:outputLabel value="Data de Emissão:*" for="DataEmissaoIdentidadeFuncionario"/>
+                    <p:inputMask id="DataEmissaoIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.dataDeEmissao}" mask="99/99/9999" />
+
+                    <p:outputLabel value="Nome do pai: " for="NomeDoPaiIdentidadeFuncionario"/>
+                    <p:inputText id="NomeDoPaiIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.nomeDoPai}"/>
+
+                    <p:outputLabel value="Nome da mãe:*" for="NomeDoMaeIdentidadeFuncionario"/>
+                    <p:inputText id="NomeDoMaeIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.nomeDaMae}" />
+
+                    <p:outputLabel value="Naturalidade: " for="NaturalidadeIdentidadeFuncionario"/>
+                    <p:inputText id="NaturalidadeIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.naturalidade}"/>
+
+                    <p:outputLabel value="Data de Nascimento: " for="DataDeNascimentoIdentidadeFuncionario"/>
+                    <p:inputMask id="DataDeNascimentoIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.dataDeNascimento}"  mask="99/99/9999"/>
+
+                    <p:outputLabel value="UF da identidade:*" for="UFIdentidadeDoFuncionario"/>
+                    <p:inputText id="UFIdentidadeDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.UFIdentidade}" />
+
+                    <p:outputLabel value="Número do CPF:*" for="CPFDoFuncionario"/> 
+                    <p:inputMask id="CPFDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.cpf}" mask="999.999.999-99" />
+                    
+
+                    <p:outputLabel value="Rua:*" for="RuaEnderecoDoFuncionario"/>
+                    <p:inputText id="RuaEnderecoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioEndereco.rua}" />
+
+                    <p:outputLabel value="Número do logradouro:*" for="NumeroEnderecoDoFuncionario"/>
+                    <p:inputText id="NumeroEnderecoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioEndereco.numero}" />
+
+                    <p:outputLabel value="Bairro:*" for="BairroEnderecoDoFuncionario"/>
+                    <p:inputText id="BairroEnderecoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioEndereco.bairro}" />
+
+                    <p:outputLabel value="CEP:*" for="CEPEnderecoDoFuncionario"/>
+                    <p:inputMask id="CEPEnderecoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioEndereco.cep}" mask="99999-999" />
+
+
+                    <p:outputLabel value="Número: " for="NumeroCNHDoFuncionario"/>
+                    <p:inputMask id="NumeroCNHDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioCNH.numeroCNH}" mask="99999999999   "/>
+
+                    <p:outputLabel value="Categoria: " for="CategoriaCNHDoFuncionario"/>
+                    <p:inputText id="CategoriaCNHDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioCNH.categoriaCNH}" />
+
+
+                    <p:outputLabel value="Número: " for="NumeroDoPISDoFuncionario"/>
+                    <p:inputText id="NumeroDoPISDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.pis}"/>
+
+
+                    <p:outputLabel value="Número: " for="NumeroDoTituloDoFuncionario"/>
+                    <p:inputMask id="NumeroDoTituloDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioTitulo.numeroTitulo}" mask="999999999999"/>
+
+                    <p:outputLabel value="Zona: " for="NumeroDaZonaDoTituloDoFuncionario"/>
+                    <p:inputText id="NumeroDaZonaDoTituloDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioTitulo.zonaTitulo}"/>
+
+                    <p:outputLabel value="Seção: " for="SecaoDoTituloDoFuncionario"/>
+                    <p:inputText id="SecaoDoTituloDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioTitulo.secaoTitulo}"/>
+
+
+                    <p:outputLabel value="Número: " for="NumeroDoCTPSDoFuncionario"/>
+                    <p:inputMask id="NumeroDoCTPSDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioCTPS.numeroCTPS}" mask="9999999"/>
+
+                    <p:outputLabel value="Série: " for="SerieDoCTPSDoFuncionario"/>
+                    <p:inputText id="SerieDoCTPSDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioCTPS.serieCTPS}" />
+
+                    <p:outputLabel value="Estado: " for="EstadoDoCTPSDoFuncionario"/>
+                    <p:inputText id="EstadoDoCTPSDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioCTPS.estadoCTPS}" />
+
+
+                    <p:outputLabel value="Número: " for="NumeroReservistaDoFuncionario"/>
+                    <p:inputMask id="NumeroReservistaDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioReservista.numeroReservista}" mask="999999"/>
+
+                    <p:outputLabel value="Série: " for="SerieReservistaDoFuncionario"/>
+                    <p:inputText id="SerieReservistaDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioReservista.serieReservista}"/>
+
+                    <p:outputLabel value="Categoria: " for="CategoriaReservistaDoFuncionario"/>
+                    <p:inputText id="CategoriaReservistaDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioReservista.categoriaReservista}"/>
+
+                    <p:outputLabel value="Estado Civil:" for="EstadoCivilDoFuncionario"/>
+                    <p:inputText id="EstadoCivilDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.estadoCivil}"/>
+                    
+                    <p:outputLabel value="Data:*" for="DataDaAdmissaoDoFuncionario" />
+                    <p:inputMask id="DataDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.dataAdmissao}" mask="99/99/9999" />
+
+                    <p:outputLabel value="Valor do Salário:*" for="ValorSalarioDaAdmissaoDoFuncionario"/>
+                    <p:inputText id="ValorSalarioDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.valorSalario}" />
+
+                    <p:outputLabel value="Função do Funcionário:*" for="FuncaoDaAdmissaoDoFuncionario"/>
+                    <p:selectOneRadio id="FuncaoDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.funcao}" >
+                        
+                        <f:selectItem itemLabel="Motorista" itemValue="Motorista"/>
+                        <f:selectItem itemLabel="Cobrador" itemValue="Cobrador"/>
+                        
+                    </p:selectOneRadio>
+                    
+                    <p:outputLabel value="Horas de trabalho:*" for="HorasDeTrabalhoDaAdmissaoDoFuncionario" />
+                    <p:inputMask id="HorasDeTrabalhoDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.horas}" mask="99" />
+
+                    <p:outputLabel value="Instrução do Funcionário:*" for="InstrucaoDaAdmissaoDoFuncionario"/>
+                    <p:inputText id="InstrucaoDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.instrucao}" />
+
+                    <p:outputLabel value="Número de filhos:*" for="NumeroDeFilhosDaAdmissaoDoFuncionario"/>
+                    <p:inputMask id="NumeroDeFilhosDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.numeroDeFilhos}" mask="9" />
+
+
+                    <p:outputLabel value="Número Agência:*" for="ContaAgenciaDaAdmissaoDoFuncionario"/>
+                    <p:inputMask id="ContaAgenciaDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.conta.numeroAgencia}" mask="9999" />
+
+                    <p:outputLabel value="Número Conta:*" for="ContaNumeroContaDaAdmissaoDoFuncionario"/>
+                    <p:inputMask id="ContaNumeroContaDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.conta.numeroConta}" mask="9999999999" />
+                </h:panelGrid>
+                
+                <h:commandButton value="Alterar" actionListener="#{controllerFuncionarioSMBG.alterarFuncionario()}" />
+                
+                </h:form>
+
+            </p:dialog>
+        
+    </h:body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>BUSCA ÔNIBUS</title>
+        <h:outputStylesheet library="css" name="Css.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </h:head>
+    <h:body>
+
+        <div id="faixa">
+            <h1 id="textoFaixa">SMBG</h1>
+            <h:form>
+                <p:commandButton style="position: relative; top: 212px; left: 93.5%" value="menu" 
+                                 action="#{controllerPaginaAdminitrador.irPaginaOnibus()}"/>                 
+            </h:form>
+        </div>
+
+        <h:graphicImage id="menu" library="imagem" name="imgMenu.png"/>
+
+        <div id="divTexto"> 
+            <div id="titulo"> ÔNIBUS </div>
+            <div id="formulario">
+
+                <h:form id="listaOnibus">
+
+                    <h3> CAMPOS DE BUSCA </h3>
+
+                    <p:outputLabel value="Código Renavam" for="BuscaOnibusPeloCodigoRenavam" />
+                    <p:inputText class="camposFormulario" id="BuscaOnibusPeloCodigoRenavam" value="#{controllerOnibusSMBG.buscarOnibus}" />
+
+                    <p:commandButton class="menuCadastrar" value="Buscar" id="BuscarOnibus" actionListener="#{controllerOnibusSMBG.buscarOnibusPeloCodigoRenavam()}" update=":listaOnibus:dtOnibus" />
+
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:dataTable id="dtOnibus" value="#{controllerOnibusSMBG.onibus}" var="onibus">
+                        <p:column headerText="Chassi">
+                            <h:outputText value="#{onibus.chassi}" />
+                        </p:column>
+
+                        <p:column headerText="Placa">
+                            <h:outputText value="#{onibus.placa}" />
+                        </p:column>
+
+                        <p:column headerText="Modelo">
+                            <h:outputText value="#{onibus.modelo}" />
+                        </p:column>
+
+                        <p:column headerText="Marca">
+                            <h:outputText value="#{onibus.marca}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+
+            </div>
+
+
+        </div>
+
+    </h:body>
+</html>

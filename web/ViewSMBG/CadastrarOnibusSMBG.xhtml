@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SMBG - Ônibus</title>
+        <h:outputStylesheet library="css" name="Css.css" />
+    </h:head>
+    <h:body>
+
+        <div id="faixa">
+            <h1 id="textoFaixa">SMBG</h1>
+            <h:form>
+                <p:commandButton style="position: relative; top: 212px; left: 93.5%" value="menu" 
+                                 action="#{controllerPaginaAdminitrador.irPaginaOnibus()}"/>                 
+            </h:form>
+        </div>
+
+        <h:graphicImage id="menu" library="imagem" name="imgMenu.png"/>
+
+        <div id="divTexto"> 
+            <div id="titulo"> CADASTRO DO ÔNIBUS </div>
+            <div id="formulario">
+
+                <br></br>
+                <h:outputText value="Campos Obrigatórios:*" id="msgCampoObrigatorio"/>
+
+                <h:form>
+
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+
+                    <h3> DADOS DO ÔNIBUS </h3>
+
+                    <p:outputLabel value="Código Renavam:*" for="CodigoRenavamDoOnibus" />
+                    <p:inputText class="camposFormulario" id="CodigoRenavamDoOnibus" value="#{controllerOnibusSMBG.onibus.codigoRenavam}" required="true"/>
+
+                    <p:outputLabel value="Chassis:*" for="ChassisDoOnibus" />
+                    <p:inputText class="camposFormulario" id="ChassisDoOnibus" value="#{controllerOnibusSMBG.onibus.chassi}" required="true" />
+
+                    <p:outputLabel value="Placa:*" for="PlacaDoOnibus" />
+                    <p:inputText class="camposFormulario" id="PlacaDoOnibus" value="#{controllerOnibusSMBG.onibus.placa}" required="true"/>
+
+                    <p:outputLabel value="Ano:*" for="AnoDoOnibus" />
+                    <p:inputMask class="camposFormulario" id="AnoDoOnibus" value="#{controllerOnibusSMBG.onibus.ano}" required="true" mask="9999"/>
+
+                    <p:outputLabel value="Modelo:*" for="ModeloDoOnibus" />
+                    <p:inputText class="camposFormulario" id="ModeloDoOnibus" value="#{controllerOnibusSMBG.onibus.modelo}" required="true"/>
+
+                    <p:outputLabel value="Marca:*" for="MarcaDoOnibus" />
+                    <p:inputText class="camposFormulario" id="MarcaDoOnibus" value="#{controllerOnibusSMBG.onibus.marca}" required="true"/>
+
+                    <p:outputLabel value="Tipo:*" for="TipoDoOnibus" />
+                    <p:inputText class="camposFormulario" id="TipoDoOnibus" value="#{controllerOnibusSMBG.onibus.tipo}" required="true"/>
+
+                    <p:outputLabel value="Combustivel:*" for="CombustivelDoOnibus" />
+                    <p:inputText class="camposFormulario" id="CombustivelDoOnibus" value="#{controllerOnibusSMBG.onibus.combustivel}" required="true"/>
+
+                    <p:outputLabel value="Número de portas:*" for="NumeroDePortasDoOnibus" />
+                    <p:inputMask class="camposFormulario" id="NumeroDePortasDoOnibus" value="#{controllerOnibusSMBG.onibus.numeroDePortas}" required="true" mask="9"/>
+
+                    <p:outputLabel value="Número de eixos:*" for="NumeroDeEixosDoOnibus" />
+                    <p:inputText class="camposFormulario" id="NumeroDeEixosDoOnibus" value="#{controllerOnibusSMBG.onibus.numeroDeEixos}" required="true"/>
+
+                    <p:outputLabel value="Capacidade:*" for="CapacidadeDoOnibus" />
+                    <p:inputMask class="camposFormulario" id="CapacidadeDoOnibus" value="#{controllerOnibusSMBG.onibus.capacidade}" required="true" mask="99"/>
+
+                    <h3> Opcionais </h3>
+                    
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                        
+                        <p:outputLabel for="@next" value="Ar-Condicionado: " />
+                        <p:selectBooleanCheckbox value="#{controllerOnibusSMBG.onibus.arCondicionado}" />
+
+                        <p:outputLabel for="@next" value="Cambio automatico: " />
+                        <p:selectBooleanCheckbox value="#{controllerOnibusSMBG.onibus.cambioAutomatico}" />
+
+                        <p:outputLabel for="@next" value="Direção Eletrica: " />
+                        <p:selectBooleanCheckbox value="#{controllerOnibusSMBG.onibus.direcaoEletrica}" />
+
+                        <p:outputLabel for="@next" value="Direção Hidráulica: " />
+                        <p:selectBooleanCheckbox value="#{controllerOnibusSMBG.onibus.direcaoHidraulica}" />
+
+                        <p:outputLabel for="@next" value="Freio ABS: " />
+                        <p:selectBooleanCheckbox value="#{controllerOnibusSMBG.onibus.freioABS}" />
+                        
+                    </h:panelGrid>
+                    <p:commandButton class="menuCadastrar" value="Finalizar" actionListener="#{controllerOnibusSMBG.cadastrarOnibus()}" update="@form"/>
+
+                </h:form>
+            </div>
+        </div>
+
+
+    </h:body>
+</html>
+

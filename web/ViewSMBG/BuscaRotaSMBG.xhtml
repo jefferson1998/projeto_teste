@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>BUSCA ROTA</title>
+        <h:outputStylesheet library="css" name="Css.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+
+        <div id="faixa">
+            <h1 id="textoFaixa">SMBG</h1>
+            <h:form>
+                <p:commandButton style="position: relative; top: 212px; left: 93.5%" value="menu" 
+                                 action="#{controllerPaginaAdminitrador.irPaginaRota()}"/>                 
+            </h:form>
+        </div>
+
+        <h:graphicImage id="menu" library="imagem" name="imgMenu.png"/>
+
+        <div id="divTexto"> 
+            <div id="titulo"> ROTA </div>
+            <div id="formulario">
+
+                <h:form id="listaRota">
+
+                    <h3> CAMPOS DE BUSCA </h3>
+
+                    <p:outputLabel value="Origem" for="BuscaRotaPelaOrigem" />
+                    <p:inputText class="camposFormulario" id="BuscaRotaPelaOrigem" value="#{controllerRotaSMBG.origem}"/>
+
+
+                    <p:commandButton class="menuCadastrar" value="Buscar" id="BuscarOnibus" action="#{controllerRotaSMBG.buscarPelaOrigemDaRota()}" update=":listaRota:dtRota"/>
+
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:dataTable id="dtRota" value="#{controllerRotaSMBG.buscarPelaOrigemDaRota()}" var="rota">
+
+                        <p:column headerText="Origem">
+                            <h:outputText value="#{rota.origem}" />
+                        </p:column>
+
+                        <p:column headerText="Destino">
+                            <h:outputText value="#{rota.destino}" />
+                        </p:column>
+
+                        <p:column headerText="Horário Saída">
+                            <h:outputText value="#{rota.horarioSaida}" />
+                        </p:column>
+
+                        <p:column headerText="Horário Previsto de Chegada">
+                            <h:outputText value="#{rota.horarioPrevistoDeChegada}" />
+                        </p:column>
+
+                        <p:column headerText="Ônibus">
+                            <h:outputText value="#{rota.onibusQueFazemEstaRota.placa}" />
+                        </p:column>
+
+                    </p:dataTable>
+
+                </h:form>
+
+            </div>
+
+        </div>
+
+    </h:body>
+</html>

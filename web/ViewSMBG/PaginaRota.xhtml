@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SMBG Rota</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="Css.css" />
+
+    </h:head>
+    <h:body>
+
+        <div id="faixa">
+            <h1 id="textoFaixa">SMBG</h1>
+            <h5 id="bemVindoUsuario"> Seja Bem-Vindo </h5>
+        </div>
+
+        <h:graphicImage id="menu" library="imagem" name="imgMenu.png"/>
+
+        <h:form>
+            <div id="botoes">
+                <p:commandButton value="Cadastrar" action = "#{controllerPaginaAdminitrador.irCadastrarRota()}"/>
+
+                <p:commandButton value="Menu" action="#{controllerPaginaAdminitrador.irPaginaAdmin()}"/> 
+                
+                <p:commandButton value="Buscar" action="#{controllerPaginaAdminitrador.irBuscarRota()}"/> 
+
+                <p:commandButton value="Deslogar" action="#{controllerSessaoUsuario.deslogar()}"/>  
+
+            </div>
+        </h:form>
+
+        <h:form id="listaRota">
+            
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
+            
+            <p:dataTable id="dtRota" value="#{controllerRotaSMBG.listaTodos()}" var="rota">
+
+                <p:column headerText="Origem">
+                    <h:outputText value="#{rota.origem}" />
+                </p:column>
+
+                <p:column headerText="Destino">
+                    <h:outputText value="#{rota.destino}" />
+                </p:column>
+
+                <p:column headerText="Horário Saída">
+                    <h:outputText value="#{rota.horarioSaida}" />
+                </p:column>
+
+                <p:column headerText="Horário Previsto de Chegada">
+                    <h:outputText value="#{rota.horarioPrevistoDeChegada}" />
+                </p:column>
+
+                <p:column headerText="Ônibus">
+                    <h:outputText value="#{rota.onibusQueFazemEstaRota.placa}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Ações"/>
+                    </f:facet>
+                    <h:commandLink value="Remover" action="#{controllerRotaSMBG.removerRota()}"
+                                   onclick="if (!confirm('Deseja realmente Remover esta Rota?')) {
+                                               return false;
+                                           }">
+                        <f:selectItem itemValue="#{rota}" value="#{controllerRotaSMBG.rota}"/>
+                    </h:commandLink>
+                    
+                    <br/>
+                    
+                    <p:commandLink value="Editar" oncomplete="PF('alterarRotaDialog').show()" update=":listaRota:dialogAlterar">
+                        <f:setPropertyActionListener value="#{rota}" target="#{controllerRotaSMBG.rota}"/>
+                    </p:commandLink>
+                    
+                </p:column>
+            </p:dataTable>
+                
+                <br/>
+                
+                <p:dialog id="dialogAlterar" header="Alterar Rota" widgetVar="alterarRotaDialog" modal="true" height="250" draggable="false">
+                        <h:panelGrid columns="2" >
+                            
+                            <h:outputLabel value="Origem" for="origem" />
+                            <h:inputText value="#{controllerRotaSMBG.rota.origem}" id="origem" />
+                            
+                            <h:outputLabel value="Destino" for="destino" />
+                            <h:inputText value="#{controllerRotaSMBG.rota.destino}" id="destino" />
+                            
+                            <h:outputLabel value="Horário de Saída" for="horarioSaida" />
+                            <h:inputText value="#{controllerRotaSMBG.rota.horarioSaida}" id="horarioSaida" />
+                            
+                            <h:outputLabel value="Horário Previsto de Chegada " for="horarioPrevistoDeChegada" />
+                            <h:inputText value="#{controllerRotaSMBG.rota.horarioPrevistoDeChegada}" id="horarioPrevistoDeChegada" />
+                            
+                        </h:panelGrid>
+                    <h:commandButton value="Alterar" actionListener="#{controllerRotaSMBG.atualizarRota()}" />
+                </p:dialog>
+            
+        </h:form>
+
+    </h:body>
+</html>

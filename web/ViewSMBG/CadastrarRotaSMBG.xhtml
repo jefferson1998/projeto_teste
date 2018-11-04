@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SMBG - Rota</title>
+        <h:outputStylesheet library="css" name="Css.css" />
+    </h:head>
+    <h:body>
+
+        <div id="faixa">
+            <h1 id="textoFaixa">SMBG</h1>
+             <h:form>
+                <p:commandButton style="position: relative; top: 212px; left: 93.5%" value="menu" 
+                                 action="#{controllerPaginaAdminitrador.irPaginaRota()}"/>                 
+            </h:form>
+        </div>
+
+        <h:graphicImage id="menu" library="imagem" name="imgMenu.png"/>
+
+        <div id="divTexto"> 
+            <div id="titulo"> CADASTRO DA ROTA </div>
+            <div id="formulario">
+
+                <br/>
+                <h:outputText value="Campos Obrigatórios:*" id="msgCampoObrigatorio"/>
+                <br/>
+
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    
+                    <h3> DADOS DA ROTA </h3>
+
+                    <p:outputLabel value="Origem da rota:*" for="OrigemDaRota" />
+                    <p:inputText class="camposFormulario" id="OrigemDaRota" value="#{controllerRotaSMBG.rota.origem}" required="true"/>
+
+                    <p:outputLabel value="Destino da rota:*" for="DestinoDaRota" />
+                    <p:inputText class="camposFormulario" id="DestinoDaRota" value="#{controllerRotaSMBG.rota.destino}" required="true"/>
+
+                    <p:outputLabel value="Hórario de Saída:*" for="HorarioDeSaidaDaRota" />
+                    <p:inputMask class="camposFormulario" id="HorarioDeSaidaDaRota" value="#{controllerRotaSMBG.rota.horarioSaida}"  mask="99:99" required="true" />
+
+                    <p:outputLabel value="Hórario Previsto de Chegada:*" for="HorarioPrevistoDeChegadaDaDaRota" />
+                    <p:inputMask class="camposFormulario" id="HorarioPrevistoDeChegadaDaDaRota" value="#{controllerRotaSMBG.rota.horarioPrevistoDeChegada}" mask="99:99" required="true"/>
+
+                <br/><br/><br/><br/>
+                    <p:dataTable id="listaOnibus" value="#{controllerOnibusSMBG.listaTodos()}" var="onibus">
+
+                        <p:column headerText="Codigo Ônibus">
+                            <h:outputText value="#{onibus.id}" />
+                        </p:column>
+                        
+                        <p:column headerText="Placa">
+                            <h:outputText value="#{onibus.placa}" />
+                        </p:column>
+                        
+                        <p:column headerText="Modelo">
+                            <h:outputText value="#{onibus.modelo}" />
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                    <h:outputText value="Ações"/>
+                            </f:facet>
+                            <h:commandLink value="Adicionar" action="#{controllerRotaSMBG.rota.setOnibusQueFazemEstaRota(onibus)}" 
+                                    onclick="if(!confirm('Deseja realmente adicionar este Ônibus?')) {return false;}">
+                                <f:selectItem itemValue="#{onibus}" value="#{controllerRotaSMBG.rota.onibusQueFazemEstaRota}"/>
+                            </h:commandLink>
+                         </p:column>
+                
+                    </p:dataTable>
+                    
+                <br/><br/>
+                    <p:commandButton class="menuCadastrar" value="Cadastrar" id="CadastrarRota" actionListener="#{controllerRotaSMBG.cadastrarRota()}" 
+                                     update="@form" />
+                </h:form>
+            </div>
+        </div>
+
+    </h:body>
+</html>
+

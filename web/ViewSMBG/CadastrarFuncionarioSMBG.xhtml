@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>SMBG - Funcionário</title>
+        <h:outputStylesheet library="css" name="Css.css" />
+
+    </h:head>
+    <h:body>
+        
+        <div id="faixa">
+            <h1 id="textoFaixa">SMBG</h1>
+            <h:form>
+                <p:commandButton style="position: relative; top: 212px; left: 93.5%" value="menu" 
+                                 action="#{controllerPaginaAdminitrador.irPaginaFuncionario()}"/> 
+            </h:form>
+        </div>
+
+        <h:graphicImage id="menu" library="imagem" name="imgMenu.png"/>
+
+        <div id="divTexto"> 
+            <div id="titulo"> CADASTRO FUNCIONÁRIO </div>
+            <div id="formulario">
+
+                <br/>
+                <h:outputText value="Campos Obrigatórios:*" id="msgCampoObrigatorio"/>
+
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <h3> DADOS DO RG </h3>
+
+                    <p:outputLabel value="Nome:*" for="NomeIdentidadeFuncionario" />
+                    <p:inputText class="camposFormulario" id="NomeIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.nome}" required="true"/>
+
+                    <p:outputLabel value="Número RG:*" for="NumeroIdentidadeFuncionario"/>
+                    <p:inputText class="camposFormulario" id="NumeroIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.numeroIdentidade}" required="true" />
+
+                    <p:outputLabel value="Órgão Emissor:*" for="OrgaoEmissorIdentidadeFuncionario"/>
+                    <p:inputText class="camposFormulario" id="OrgaoEmissorIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.orgaoEmissor}" required="true" />
+
+                    <p:outputLabel value="Data de Emissão:*" for="DataEmissaoIdentidadeFuncionario"/>
+                    <p:inputMask class="camposFormulario" id="DataEmissaoIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.dataDeEmissao}" mask="99/99/9999" required="true" />
+
+                    <p:outputLabel value="Nome do pai: " for="NomeDoPaiIdentidadeFuncionario"/>
+                    <p:inputText class="camposFormulario" id="NomeDoPaiIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.nomeDoPai}"/>
+
+                    <p:outputLabel value="Nome da mãe:*" for="NomeDoMaeIdentidadeFuncionario"/>
+                    <p:inputText class="camposFormulario" id="NomeDoMaeIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.nomeDaMae}" required="true" />
+
+                    <p:outputLabel value="Naturalidade: " for="NaturalidadeIdentidadeFuncionario"/>
+                    <p:inputText class="camposFormulario" id="NaturalidadeIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.naturalidade}"/>
+
+                    <p:outputLabel value="Data de Nascimento: " for="DataDeNascimentoIdentidadeFuncionario"/>
+                    <p:inputMask class="camposFormulario" id="DataDeNascimentoIdentidadeFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.dataDeNascimento}"  mask="99/99/9999"/>
+
+                    <p:outputLabel value="UF da identidade:*" for="UFIdentidadeDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="UFIdentidadeDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioIdentidade.UFIdentidade}" required="true" />
+
+                    <p:outputLabel value="Número do CPF:*" for="CPFDoFuncionario"/> 
+                    <p:inputMask class="camposFormulario" id="CPFDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.cpf}" mask="999.999.999-99" required="true" />
+                    
+                    <p:outputLabel value="Número do Telefone: " for="TelefoneDoFuncionario"/> 
+                    <p:inputMask class="camposFormulario" id="TelefoneDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.telefonefuncionario}" mask="(99)9999-9999"/>
+                    
+                    <p:outputLabel value="Email do Funcionário:" for="EmailDoFuncionario"/> 
+                    <p:inputText class="camposFormulario" id="EmailDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.emailfuncionario}" />
+                    
+                    <h3> DADOS DO ENDEREÇO </h3>
+
+                    <p:outputLabel value="Rua:*" for="RuaEnderecoDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="RuaEnderecoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioEndereco.rua}" required="true" />
+
+                    <p:outputLabel value="Número do logradouro:*" for="NumeroEnderecoDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="NumeroEnderecoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioEndereco.numero}" required="true" />
+
+                    <p:outputLabel value="Bairro:*" for="BairroEnderecoDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="BairroEnderecoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioEndereco.bairro}" required="true" />
+
+                    <p:outputLabel value="CEP:*" for="CEPEnderecoDoFuncionario"/>
+                    <p:inputMask class="camposFormulario" id="CEPEnderecoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioEndereco.cep}" mask="99999-999" required="true" />
+
+                    <h3> DADOS DA CNH </h3>
+
+                    <p:outputLabel value="Número: " for="NumeroCNHDoFuncionario"/>
+                    <p:inputMask class="camposFormulario" id="NumeroCNHDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioCNH.numeroCNH}" mask="99999999999"/>
+
+                    <p:outputLabel value="Categoria: " for="CategoriaCNHDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="CategoriaCNHDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioCNH.categoriaCNH}" />
+
+                    <h3> DADOS DO PIS </h3>
+
+                    <p:outputLabel value="Número: " for="NumeroDoPISDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="NumeroDoPISDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.pis}"/>
+
+                    <h3> DADOS DO TÍTULO </h3>
+
+                    <p:outputLabel value="Número: " for="NumeroDoTituloDoFuncionario"/>
+                    <p:inputMask class="camposFormulario" id="NumeroDoTituloDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioTitulo.numeroTitulo}" mask="999999999999"/>
+
+                    <p:outputLabel value="Zona: " for="NumeroDaZonaDoTituloDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="NumeroDaZonaDoTituloDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioTitulo.zonaTitulo}"/>
+
+                    <p:outputLabel value="Seção: " for="SecaoDoTituloDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="SecaoDoTituloDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioTitulo.secaoTitulo}"/>
+
+                    <h3> DADOS DO CTPS </h3>
+
+                    <p:outputLabel value="Número: " for="NumeroDoCTPSDoFuncionario"/>
+                    <p:inputMask class="camposFormulario" id="NumeroDoCTPSDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioCTPS.numeroCTPS}" mask="9999999"/>
+
+                    <p:outputLabel value="Série: " for="SerieDoCTPSDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="SerieDoCTPSDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioCTPS.serieCTPS}" />
+
+                    <p:outputLabel value="Estado: " for="EstadoDoCTPSDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="EstadoDoCTPSDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioCTPS.estadoCTPS}" />
+
+                    <h3> DADOS DA RESERVISTA </h3>
+
+                    <p:outputLabel value="Número: " for="NumeroReservistaDoFuncionario"/>
+                    <p:inputMask class="camposFormulario" id="NumeroReservistaDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioReservista.numeroReservista}" mask="999999"/>
+
+                    <p:outputLabel value="Série: " for="SerieReservistaDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="SerieReservistaDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioReservista.serieReservista}"/>
+
+                    <p:outputLabel value="Categoria: " for="CategoriaReservistaDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="CategoriaReservistaDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.funcionarioReservista.categoriaReservista}"/>
+
+                    <p:outputLabel value="Estado Civil:" for="EstadoCivilDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="EstadoCivilDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.estadoCivil}"/>
+                    
+                    <h3> DADOS DA ADMISSÃO </h3>
+
+                    <p:outputLabel value="Data:*" for="DataDaAdmissaoDoFuncionario" />
+                    <p:inputMask class="camposFormulario" id="DataDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.dataAdmissao}" mask="99/99/9999" required="true" />
+
+                    <p:outputLabel value="Valor do Salário:*" for="ValorSalarioDaAdmissaoDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="ValorSalarioDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.valorSalario}" required="true" />
+
+                    <p:outputLabel value="Função do Funcionário:*" for="FuncaoDaAdmissaoDoFuncionario"/>
+                    <p:selectOneRadio id="FuncaoDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.funcao}" required="true" >
+                        
+                        <f:selectItem itemLabel="Motorista" itemValue="Motorista"/>
+                        <f:selectItem itemLabel="Cobrador" itemValue="Cobrador"/>
+                        
+                    </p:selectOneRadio>
+                    
+                    <p:outputLabel value="Horas de trabalho:*" for="HorasDeTrabalhoDaAdmissaoDoFuncionario" />
+                    <p:inputMask class="camposFormulario" id="HorasDeTrabalhoDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.horas}" mask="99" required="true" />
+
+                    <p:outputLabel value="Instrução do Funcionário:*" for="InstrucaoDaAdmissaoDoFuncionario"/>
+                    <p:inputText class="camposFormulario" id="InstrucaoDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.instrucao}" required="true" />
+
+                    <p:outputLabel value="Número de filhos:*" for="NumeroDeFilhosDaAdmissaoDoFuncionario"/>
+                    <p:inputMask class="camposFormulario" id="NumeroDeFilhosDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.numeroDeFilhos}" mask="9" required="true" />
+
+                    <h3> DADOS DA CONTA </h3>
+
+                    <p:outputLabel value="Número Agência:*" for="ContaAgenciaDaAdmissaoDoFuncionario"/>
+                    <p:inputMask class="camposFormulario" id="ContaAgenciaDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.conta.numeroAgencia}" mask="9999" required="true" />
+
+                    <p:outputLabel value="Número Conta:*" for="ContaNumeroContaDaAdmissaoDoFuncionario"/>
+                    <p:inputMask class="camposFormulario" id="ContaNumeroContaDaAdmissaoDoFuncionario" value="#{controllerFuncionarioSMBG.funcionario.admissao.conta.numeroConta}" mask="9999999999" required="true" />
+                    
+                    <p:commandButton class="menuCadastrar" value="Cadastrar" actionListener="#{controllerFuncionarioSMBG.cadastrarFuncionario()}" update="@form" />
+
+                </h:form>
+            </div>
+        </div>
+
+    </h:body>
+</html>
+

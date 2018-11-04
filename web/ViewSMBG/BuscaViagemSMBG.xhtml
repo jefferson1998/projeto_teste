@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>BUSCA VIAGEM</title>
+        <h:outputStylesheet library="css" name="Css.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+    </h:head>
+    <h:body>
+
+        <div id="faixa">
+            <h1 id="textoFaixa">SMBG</h1>
+             <h:form>
+                <p:commandButton style="position: relative; top: 212px; left: 93.5%" value="menu" 
+                                   action="#{controllerPaginaAdminitrador.retornarPaginaAdministrador()}"/>                 
+            </h:form>
+        </div>
+
+        <h:graphicImage id="menu" library="imagem" name="imgMenu.png"/>
+
+        <div id="divTexto"> 
+            <div id="titulo"> VIAGEM </div>
+            <div id="formulario">
+
+                <h:form>
+
+                    <h3> CAMPOS DE BUSCA </h3>
+
+                    <p:outputLabel value="Data" for="BuscaViagemPelaData" />
+                    <p:inputText class="camposFormulario" id="BuscaViagemPelaData"/>
+
+                    <p:outputLabel value="CPF" for="BuscaViagemPeloCPFDoFuncionario" />
+                    <p:inputText class="camposFormulario" id="BuscaViagemPeloCPFDoFuncionario"/>
+
+                    <p:outputLabel value="Dia da Semana" for="BuscaViagemPeloDiaDaSemana" />
+                    <p:inputText class="camposFormulario" id="BuscaViagemPeloDiaDaSemana"/>
+                    
+                    <p:outputLabel value="Código Renavam" for="BuscaViagemPeloCodigoRenavam" />
+                    <p:inputText class="camposFormulario" id="BuscaViagemPeloCodigoRenavam"/>
+                    
+                    <p:outputLabel value="Placa" for="BuscaViagemPelaPlaca" />
+                    <p:inputText class="camposFormulario" id="BuscaViagemPelaPlaca"/>
+                    
+                    <p:outputLabel value="Chassi" for="BuscaViagemPeloChassi" />
+                    <p:inputText class="camposFormulario" id="BuscaViagemPeloChassi"/>
+                    
+                     <h3> BUSCAR PELA ROTA </h3>
+                  
+                    <p:outputLabel value="Origem" for="BuscaViagemPelaRotaOrigem" />
+                    <p:inputText class="camposFormulario" id="BuscaViagemPelaRotaOrigem"/>
+                    
+                    <p:outputLabel value="Destino" for="BuscaViagemPelaRotaDestino" />
+                    <p:inputText class="camposFormulario" id="BuscaViagemPelaRotaDestino"/>
+                    
+                    <p:outputLabel value="Horário de Saída" for="BuscaViagemPelaRotaHorarioSaida" />
+                    <p:inputText class="camposFormulario" id="BuscaViagemPelaRotaHorarioSaida"/>
+                    
+                    <p:outputLabel value="Horário Previsto de Chegada" for="BuscaViagemPelaRotaHorarioPrevistoDeChegada" />
+                    <p:inputText class="camposFormulario" id="BuscaViagemPelaRotaHorarioPrevistoDeChegada"/>
+                    
+                    <p:commandButton class="menuCadastrar" value="Buscar" id="BuscarOnibus"/>
+                </h:form>
+
+            </div>
+
+        </div>
+
+    </h:body>
+</html>

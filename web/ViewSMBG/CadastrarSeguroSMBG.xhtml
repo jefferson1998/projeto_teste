@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SMBG - Seguro</title>
+        <h:outputStylesheet library="css" name="Css.css" />
+    </h:head>
+    <h:body>
+
+        <div id="faixa">
+            <h1 id="textoFaixa">SMBG</h1>
+            <h:form>
+                <p:commandButton style="position: relative; top: 212px; left: 93.5%" value="menu" 
+                                 action="#{controllerPaginaAdminitrador.irPaginaSeguroOnibus()}"/>                 
+            </h:form>
+        </div>
+
+        <h:graphicImage id="menu" library="imagem" name="imgMenu.png"/>
+
+        <div id="divTexto"> 
+            <div id="titulo"> CADASTRO DO SEGURO </div>
+            <div id="formulario">
+
+                <br/>
+                <h:outputText value="Campos Obrigatórios:*" id="msgCampoObrigatorio"/>
+                <br/>
+
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    
+                    <h3> DADOS CORRETOR </h3>
+
+                    <p:outputLabel value="Nome do Corretor:*" for="NomeDoCorretor" />
+                    <p:inputText class="camposFormulario" id="NomeDoCorretor" value="#{controllerSeguroOnibusSMBG.seguroOnibus.nomeCorretor}" required="true"/>
+
+                    <p:outputLabel value="Código Susep do Corretor:*" for="CodigoSusepDoCorretor" />
+                    <p:inputText class="camposFormulario" id="CodigoSusepDoCorretor" value="#{controllerSeguroOnibusSMBG.seguroOnibus.codigoSusepDoCorretor}"/>
+
+                    <p:outputLabel value="Código CPD do Corretor:*" for="CodigoCPDDoCorretor" />
+                    <p:inputText class="camposFormulario" id="CodigoCPDDoCorretor" value="#{controllerSeguroOnibusSMBG.seguroOnibus.codigoCpdDoCorretor}" required="true"/>
+
+                    <p:outputLabel value="Sucursal Corretor:*" for="SucursalDoCorretor" />
+                    <p:inputText class="camposFormulario" id="SucursalDoCorretor" value="#{controllerSeguroOnibusSMBG.seguroOnibus.sucursalCorretor}" required="true"/>
+
+                    <p:outputLabel value="Inspetoria Corretor:*" for="InspetoriaDoCorretor" />
+                    <p:inputText class="camposFormulario" id="InspetoriaDoCorretor" value="#{controllerSeguroOnibusSMBG.seguroOnibus.inspetoriaDoCorretor}" required="true"/>
+
+                    <h3> DADOS SEGURO </h3>
+
+                    <p:outputLabel value="Proposta:*" for="PropostaDoSeguro" />
+                    <p:inputText class="camposFormulario" id="PropostaDoSeguro" value="#{controllerSeguroOnibusSMBG.seguroOnibus.proposta}" required="true"/>
+
+                    <p:outputLabel value="Data Emissão:*" for="DataEmissaoDoSeguro" />
+                    <p:inputMask class="camposFormulario" id="DataEmissaoDoSeguro" value="#{controllerSeguroOnibusSMBG.seguroOnibus.dataEmissao}" mask="99/99/9999" required="true"/>
+
+                    <p:outputLabel value="Apolice:*" for="ApoliceDoSeguro" />
+                    <p:inputText class="camposFormulario" id="ApoliceDoSeguro" value="#{controllerSeguroOnibusSMBG.seguroOnibus.apolice}" required="true"/>
+
+                    <p:outputLabel value="Sucursal:*" for="SucursalDoSeguro" />
+                    <p:inputText class="camposFormulario" id="SucursalDoSeguro" value="#{controllerSeguroOnibusSMBG.seguroOnibus.sucursal}" required="true"/>
+
+                    <p:outputLabel value="Processo Susep:*" for="ProcessoSusepDoSeguro" />
+                    <p:inputText class="camposFormulario" id="ProcessoSusepDoSeguro" value="#{controllerSeguroOnibusSMBG.seguroOnibus.processoSusep}" required="true"/>
+
+                    <p:outputLabel value="Código Susep:*" for="CodigoSusepDoSeguro" />
+                    <p:inputText class="camposFormulario" id="CodigoSusepDoSeguro" value="#{controllerSeguroOnibusSMBG.seguroOnibus.codigoSusep}" required="true"/>
+
+                    <p:outputLabel value="CPNJ da seguradora:*" for="CNPJdaSeguradora" />
+                    <p:inputMask class="camposFormulario" id="CNPJdaSeguradora" value="#{controllerSeguroOnibusSMBG.seguroOnibus.cnpj}" mask="999.999.999-99" required="true"/>
+
+                    <p:outputLabel value="Nome da seguradora:*" for="NomedaSeguradora" />
+                    <p:inputText class="camposFormulario" id="NomedaSeguradora" value="#{controllerSeguroOnibusSMBG.seguroOnibus.nomeSeguradora}" required="true"/>
+
+                    <p:outputLabel value="Data Inicio da Vigência:*" for="DataInicioDaVigencia" />
+                    <p:inputMask class="camposFormulario" id="DataInicioDaVigencia" value="#{controllerSeguroOnibusSMBG.seguroOnibus.dataInicioDaVigencia}" mask="99/99/9999" required="true"/>
+
+                    <p:outputLabel value="Data Final da Vigência:*" for="DataFinalDaVigencia" />
+                    <p:inputMask class="camposFormulario" id="DataFinalDaVigencia" value="#{controllerSeguroOnibusSMBG.seguroOnibus.dataFinalDaVigencia}" mask="99/99/9999" required="true" />
+
+                    <p:outputLabel value="Numero do Endosso:*" for="NumeroEndossoSeguro"/>
+                    <p:inputText class="camposFormulario" id="NumeroEndossoSeguro" value="#{controllerSeguroOnibusSMBG.seguroOnibus.numeroEndosso}" required="true" />
+
+                    <p:outputLabel value="Ramo:*" for="RamoSeguradora" />
+                    <p:inputText class="camposFormulario" id="RamoSeguradora" value="#{controllerSeguroOnibusSMBG.seguroOnibus.ramo}" required="true" />
+
+                    <h3> DADOS SEGURADO </h3>
+
+                    <p:outputLabel value="Rua:*" for="RuaEnderecoDoSegurado"/>
+                    <p:inputText class="camposFormulario" id="RuaEnderecoDoSegurado" value="#{controllerSeguroOnibusSMBG.seguroOnibus.endereco.rua}" required="true"/>
+
+                    <p:outputLabel value="Número do logradouro:*" for="NumeroEnderecoDoSegurado"/>
+                    <p:inputText class="camposFormulario" id="NumeroEnderecoDoSegurado" value="#{controllerSeguroOnibusSMBG.seguroOnibus.endereco.numero}" required="true"/>
+
+                    <p:outputLabel value="Bairro:*" for="BairroEnderecoDoSegurado"/>
+                    <p:inputText class="camposFormulario" id="BairroEnderecoDoSegurado" value="#{controllerSeguroOnibusSMBG.seguroOnibus.endereco.bairro}" required="true"/>
+
+                    <p:outputLabel value="CEP:*" for="CEPEnderecoDoSegurado"/>
+                    <p:inputMask class="camposFormulario" id="CEPEnderecoDoSegurado" value="#{controllerSeguroOnibusSMBG.seguroOnibus.endereco.cep}" mask="99999-999" required="true" />
+
+                    <p:outputLabel value="Cpf/Cnpj Do Segurado:*" for="CpfOuCnpjDoSegurado" />
+                    <p:inputMask class="camposFormulario" id="CpfOuCnpjDoSegurado" value="#{controllerSeguroOnibusSMBG.seguroOnibus.cpfOuCnpjDoSegurado}" mask="999.999.999-99"  required="true"/>
+
+                    <p:outputLabel value="Nome Do Segurado:*" for="NomeDoSegurado" />
+                    <p:inputText class="camposFormulario" id="NomeDoSegurado" value="#{controllerSeguroOnibusSMBG.seguroOnibus.nomeDoSegurado}" required="true"/>
+
+
+                    <p:dataTable id="listaOnibus" value="#{controllerOnibusSMBG.listaTodos()}" var="onibus">
+
+                        <p:column headerText="Codigo Ônibus">
+                            <h:outputText value="#{onibus.id}" />
+                        </p:column>
+
+                        <p:column headerText="Placa">
+                            <h:outputText value="#{onibus.placa}" />
+                        </p:column>
+
+                        <p:column headerText="Modelo">
+                            <h:outputText value="#{onibus.modelo}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Ações"/>
+                            </f:facet>
+                            <h:commandLink value="Adicionar" action="#{controllerSeguroOnibusSMBG.seguroOnibus.setOnibus(onibus)}" 
+                                           onclick="if (!confirm('Deseja realmente adicionar este Ônibus?')) {
+                                                return false;
+                                            }">
+                                <f:selectItem itemValue="#{onibus}" value="#{controllerSeguroOnibusSMBG.seguroOnibus.onibus}"/>
+                            </h:commandLink>
+                        </p:column>
+
+                    </p:dataTable>
+
+
+                    <p:commandButton class="menuCadastrar" value="Cadastrar" id="CadastrarSeguro" action="#{controllerSeguroOnibusSMBG.cadastrarSeguro()}" update="@form" />
+                </h:form>
+            </div>
+        </div>
+
+
+    </h:body>
+</html>
+

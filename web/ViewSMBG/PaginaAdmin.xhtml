@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SMBG Administrador</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="Css.css" />
+
+    </h:head>
+    <h:body>
+        <h:form>  
+            <p:menubar>
+                <p:menuitem value="Seja bem vindo!" url="ViewSMBG/PaginaAdmin.xhtml">
+                    <h:graphicImage id="menu" library="imagem" name="imgMenu2.png" height="30"/>
+                </p:menuitem>
+                <p:menuitem value="Funcionarios" action="#{controllerPaginaAdminitrador.irPaginaFuncionario()}" />
+                <p:menuitem value="Onibus" action="#{controllerPaginaAdminitrador.irPaginaOnibus()}"/>
+                <p:menuitem value="Seguro" action="#{controllerPaginaAdminitrador.irPaginaSeguroOnibus()}"/>
+                <p:menuitem value="Rotas" action="#{controllerPaginaAdminitrador.irPaginaRota()}"/>
+
+                <f:facet name="options">
+                    <p:inputText style="margin-right:10px" placeholder="Procurar"/>
+                    <p:commandButton  value="Sair" action="#{controllerSessaoUsuario.deslogar()}" />
+                </f:facet>
+            </p:menubar>
+
+            <div id="tableView">
+                <p:tab title="Funcionarios" >
+                    <h:panelGrid columns="2" cellpadding="4">
+                        <f:facet name="header">
+                            <p:graphicImage library="imagem" name="motorista.png"/>
+                        </f:facet>                    
+                        <h:outputText value="Quantidade: " style="font-weight: bold"/>
+                        <p:outputLabel value="#{controllerFuncionarioSMBG.listaTodos().size()}" />
+
+                        <h:outputText value="Motoristas:" style="font-weight: bold"/>
+                        <h:outputLabel value="#{controllerFuncionarioSMBG.totalDeMotoristas()}" />
+
+                        <h:outputText value="Cobradores:" style="font-weight: bold"/>
+                        <h:outputLabel value="#{controllerFuncionarioSMBG.totalDeCobradores()}" />
+                    </h:panelGrid>
+                </p:tab>
+            </div>
+            
+            <div id="tableView2">
+                <p:tab title="Ônibus" >
+                    <h:panelGrid columns="2" cellpadding="4">
+                        <f:facet name="header">
+                            <p:graphicImage library="imagem" name="onibus.png"/>
+                        </f:facet>                    
+                        <h:outputText value="Quantidade: " style="font-weight: bold"/>
+                        <h:outputText value="#{controllerOnibusSMBG.listaTodos().size()}" />
+
+                    </h:panelGrid>
+                </p:tab>
+            </div>
+
+            <div id="tableView3">
+                <p:tab title="Rotas" >
+                    <h:panelGrid columns="2" cellpadding="4">
+                        <f:facet name="header">
+                            <p:graphicImage library="imagem" name="rota.png"/>
+                        </f:facet>                    
+                        <h:outputText value="Quantidade: " style="font-weight: bold"/>
+                        <h:outputText value="#{controllerRotaSMBG.listaTodos().size()}" />
+
+                    </h:panelGrid>
+                </p:tab>
+            </div>
+            
+             <div id="tableView4">
+                <p:tab title="Seguros" >
+                    <h:panelGrid columns="2" cellpadding="4">
+                        <f:facet name="header">
+                            <p:graphicImage library="imagem" name="seguro.png"/>
+                        </f:facet>                    
+                        <h:outputText value="Quantidade: " style="font-weight: bold"/>
+                        <h:outputText value="#{controllerSeguroOnibusSMBG.listaTodos().size()}"/>
+
+                    </h:panelGrid>
+                </p:tab>
+            </div>
+
+        </h:form>
+
+    </h:body>
+</html>

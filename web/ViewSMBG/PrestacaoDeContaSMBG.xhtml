@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>SMBG Contas</title>
+        <h:outputStylesheet library="css" name="Css.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        
+        <div id="faixa">
+            <h1 id="textoFaixa">SMBG</h1>
+             <h:form>
+                <p:commandButton style="position: relative; top: 212px; left: 93.5%" value="deslogar" 
+                                 action="#{controllerSessaoUsuario.deslogar()}"/>                 
+            </h:form>
+        </div>
+
+
+        <h:graphicImage id="menu" library="imagem" name="imgMenu.png"/>
+
+        <div id="divTexto"> 
+            <div id="titulo"> PRESTAÇÃO DE CONTAS </div>
+            <div id="formulario">
+
+                <br/>
+                <h:outputText value="Campos Obrigatórios:*" id="msgCampoObrigatorio"/>
+                <br/>
+
+                <h:form>
+                    <h3> PRESTAÇÃO DE CONTAS </h3>
+
+                    <p:outputLabel value="Arrecadação total diária:*" for="ArrecadaçãoDiaria" />
+                    <p:inputText class="camposFormulario" id="ArrecadaçãoDiaria" value="#{controllerPrestacaoDeContasSMBG.prestacaoDeConta.valorTotalArrecadadoNoDia}"/>
+
+                    <p:outputLabel value="Arrecadação com descontos:*" for="ArrecadaçãoDiariaComDescontos" />
+                    <p:inputText class="camposFormulario" id="ArrecadaçãoDiariaComDescontos" value="#{controllerPrestacaoDeContasSMBG.prestacaoDeConta.valorArrecadadoDescontado}"/>
+
+                    <p:outputLabel value="Valor total combustível:*" for="ValorTotalDoCombustivel" />
+                    <p:inputText class="camposFormulario" id="ValorTotalDoCombustivel" value="#{controllerPrestacaoDeContasSMBG.prestacaoDeConta.valorTotalDoCombustivel}"/>
+
+                    <p:outputLabel value="Valor litro do ombustível:*" for="ValorDoLitroDeCombustivel" />
+                    <p:inputText class="camposFormulario" id="ValorDoLitroDeCombustivel" value="#{controllerPrestacaoDeContasSMBG.prestacaoDeConta.valorDoLitroDeCombustivel}"/>
+
+                    <p:outputLabel value="Litros abastecido:*" for="QuantidadeDeLitrosAbastecido" />
+                    <p:inputText class="camposFormulario" id="QuantidadeDeLitrosAbastecido" value="#{controllerPrestacaoDeContasSMBG.prestacaoDeConta.quantidadeDeLitrosAbastecido}"/>
+
+                    <p:outputLabel value="Valor em troco:*" for="ValorDoTroco" />
+                    <p:inputText class="camposFormulario" id="ValorDoTroco" value="#{controllerPrestacaoDeContasSMBG.prestacaoDeConta.valorTroco}"/>
+
+                    <p:outputLabel value="Salário dia do cobrador:*" for="SalarioDoCobrador" />
+                    <p:inputText class="camposFormulario" id="SalarioDoCobrador" value="#{controllerPrestacaoDeContasSMBG.prestacaoDeConta.salarioDoCobrador}"/>
+
+                    <p:outputLabel value="Salário dia do motorista:*" for="SalarioDoMotorista" />
+                    <p:inputText class="camposFormulario" id="SalarioDoMotorista" value="#{controllerPrestacaoDeContasSMBG.prestacaoDeConta.salarioDoMotorista}"/>
+                    
+                    <p:outputLabel value="CPF do funcionário:*" for="CpfDoFuncionario" />
+                    <p:inputText class="camposFormulario" id="CpfDoFuncionario" value="#{controllerPrestacaoDeContasSMBG.cpf}"/>
+
+                    <p:commandButton class="menuCadastrar" value="Cadastrar" id="CadastrarRota"/>
+                </h:form>
+
+            </div>
+        </div>
+    </h:body>
+</html>

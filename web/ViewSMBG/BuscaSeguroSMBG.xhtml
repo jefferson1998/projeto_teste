@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>BUSCA SEGURO</title>
+        <h:outputStylesheet library="css" name="Css.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+
+        <div id="faixa">
+            <h1 id="textoFaixa">SMBG</h1>
+             <h:form>
+                <p:commandButton style="position: relative; top: 212px; left: 93.5%" value="menu" 
+                                 action="#{controllerPaginaAdminitrador.irPaginaSeguroOnibus()}"/>                 
+            </h:form>
+        </div>
+
+        <h:graphicImage id="menu" library="imagem" name="imgMenu.png"/>
+
+        <div id="divTexto"> 
+            <div id="titulo"> SEGURO </div>
+            <div id="formulario">
+
+                <h:form id="listaSeguroOnibus">
+
+                    <h3> CAMPOS DE BUSCA </h3>
+
+                    <p:outputLabel value="Codigo Susep Do Corretor" for="BuscarPeloCodigoSusepDoCorretor" />
+                    <p:inputText class="camposFormulario" id="BuscarPeloCodigoSusepDoCorretor" value="#{controllerSeguroOnibusSMBG.codigoSusepDoCorretor}"/>
+
+                    <p:commandButton class="menuCadastrar" value="Buscar" id="BuscarOnibus" actionListener="#{controllerSeguroOnibusSMBG.buscarSeguroPeloCodigoSusepDoCorretor()}" update=":listaSeguroOnibus:dtSeguro"/>
+                    
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:dataTable id="dtSeguro" value="#{controllerSeguroOnibusSMBG.seguroOnibus}" var="seguroOnibus">
+
+                        <p:column headerText="Marca Ônibus">
+                            <h:outputText value="#{seguroOnibus.onibus.marca}" />
+                        </p:column>
+
+                        <p:column headerText="Chassis">
+                            <h:outputText value="#{seguroOnibus.onibus.chassi}" />
+                        </p:column>
+
+                        <p:column headerText="Modelo">
+                            <h:outputText value="#{seguroOnibus.onibus.modelo}" />
+                        </p:column>
+
+                        <p:column headerText="CNPJ da empresa">
+                            <h:outputText value="#{seguroOnibus.cnpj}" />
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+</html>
