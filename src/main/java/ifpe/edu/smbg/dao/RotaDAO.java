@@ -1,6 +1,6 @@
-package ifpe.edu.smbg.model.dao;
+package ifpe.edu.smbg.dao;
 
-import ifpe.edu.smbg.model.dao.DAO;
+import ifpe.edu.smbg.dao.DAO;
 import ifpe.edu.smbg.model.entity.Rota;
 
 import java.util.List;

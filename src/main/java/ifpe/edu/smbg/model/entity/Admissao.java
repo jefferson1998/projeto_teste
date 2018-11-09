@@ -42,15 +42,15 @@ public class Admissao extends Persistivel implements Serializable {
         conta = new Conta();
     } 
 
-    public Admissao(String dataAdmissao, double valorSalario, String funcao, int horas, String instrucao, int numeroDeFilhos, Conta conta) {
-        this.dataAdmissao = dataAdmissao;
-        this.valorSalario = valorSalario;
-        this.funcao = funcao;
-        this.horas = horas;
-        this.instrucao = instrucao;
-        this.numeroDeFilhos = numeroDeFilhos;
-        this.conta = conta;
-    }
+//    public Admissao(String dataAdmissao, double valorSalario, String funcao, int horas, String instrucao, int numeroDeFilhos, Conta conta) {
+//        this.dataAdmissao = dataAdmissao;
+//        this.valorSalario = valorSalario;
+//        this.funcao = funcao;
+//        this.horas = horas;
+//        this.instrucao = instrucao;
+//        this.numeroDeFilhos = numeroDeFilhos;
+//        this.conta = conta;
+//    }
     
     
 

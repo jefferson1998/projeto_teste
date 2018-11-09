@@ -1,8 +1,8 @@
 package ifpe.edu.smbg.model;
 
-import ifpe.edu.smbg.model.dao.DAO;
-import ifpe.edu.smbg.model.dao.ViagemDAO;
-import ifpe.edu.smbg.model.dao.ViagemHibernate;
+import ifpe.edu.smbg.dao.DAO;
+import ifpe.edu.smbg.dao.ViagemDAO;
+import ifpe.edu.smbg.dao.ViagemHibernate;
 import ifpe.edu.smbg.model.entity.Rota;
 import ifpe.edu.smbg.model.entity.Viagem;
 

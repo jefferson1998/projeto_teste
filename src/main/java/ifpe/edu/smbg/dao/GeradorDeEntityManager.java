@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ifpe.edu.smbg.model.dao;
+package ifpe.edu.smbg.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,7 +19,8 @@ public class GeradorDeEntityManager {
     
     public static EntityManager getEntityManager() {
         if(entityManagerFactory == null) {
-            entityManagerFactory = Persistence.createEntityManagerFactory("TesteSMBG");
+            entityManagerFactory = Persistence.createEntityManagerFactory("SMBG");
+            System.out.println("ENTREi");
         }
         return entityManagerFactory.createEntityManager();
     }

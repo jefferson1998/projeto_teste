@@ -1,8 +1,8 @@
 package ifpe.edu.smbg.model;
 
-import ifpe.edu.smbg.model.dao.DAO;
-import ifpe.edu.smbg.model.dao.SeguroOnibusDAO;
-import ifpe.edu.smbg.model.dao.SeguroOnibusHibernate;
+import ifpe.edu.smbg.dao.DAO;
+import ifpe.edu.smbg.dao.SeguroOnibusDAO;
+import ifpe.edu.smbg.dao.SeguroOnibusHibernate;
 import ifpe.edu.smbg.model.entity.SeguroOnibus;
 
 import java.util.List;

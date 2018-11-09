@@ -1,8 +1,8 @@
 package ifpe.edu.smbg.model;
 
-import ifpe.edu.smbg.model.dao.DAO;
-import ifpe.edu.smbg.model.dao.PrestacaoDeContaDAO;
-import ifpe.edu.smbg.model.dao.PrestacaoDeContaHibernate;
+import ifpe.edu.smbg.dao.DAO;
+import ifpe.edu.smbg.dao.PrestacaoDeContaDAO;
+import ifpe.edu.smbg.dao.PrestacaoDeContaHibernate;
 import ifpe.edu.smbg.model.entity.PrestacaoDeConta;
 
 import java.util.List;

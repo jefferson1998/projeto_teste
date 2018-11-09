@@ -1,8 +1,8 @@
 package ifpe.edu.smbg.model;
 
-import ifpe.edu.smbg.model.dao.DAO;
-import ifpe.edu.smbg.model.dao.FuncionarioDAO;
-import ifpe.edu.smbg.model.dao.FuncionarioHibernate;
+import ifpe.edu.smbg.dao.DAO;
+import ifpe.edu.smbg.dao.FuncionarioDAO;
+import ifpe.edu.smbg.dao.FuncionarioHibernate;
 import ifpe.edu.smbg.model.entity.Funcionario;
 
 import java.util.List;

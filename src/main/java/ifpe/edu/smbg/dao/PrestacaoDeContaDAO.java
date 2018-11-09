@@ -1,4 +1,4 @@
-package ifpe.edu.smbg.model.dao;
+package ifpe.edu.smbg.dao;
 
 import ifpe.edu.smbg.model.entity.PrestacaoDeConta;
 
