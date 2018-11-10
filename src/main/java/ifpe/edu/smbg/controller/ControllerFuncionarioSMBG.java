@@ -44,96 +44,96 @@ public class ControllerFuncionarioSMBG {
     }
 
     public void cadastrarFuncionario() {
-        FacesContext context = FacesContext.getCurrentInstance();
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
             funcionarioModel.cadastrarFuncionario(funcionario);
             funcionario = new Funcionario();
             listaTodos();
-            context.addMessage(null, new FacesMessage("Cadastro Efetuado!"));
+//            context.addMessage(null, new FacesMessage("Cadastro Efetuado!"));
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
         }
 
     }
 
     public void removerFuncionario() {
-        FacesContext context = FacesContext.getCurrentInstance();
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
             funcionarioModel.removerFuncionario(funcionario);
             listaTodos();
-            context.addMessage(null, new FacesMessage("Remoção Efetuada!"));
+//            context.addMessage(null, new FacesMessage("Remoção Efetuada!"));
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
         }
 
     }
     
     public void alterarFuncionario() {
-        FacesContext context = FacesContext.getCurrentInstance();
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
             funcionarioModel.atualizarFuncionario(funcionario);
             listaTodos();
-            context.addMessage(null, new FacesMessage("Alteração Efetuada!"));
+//            context.addMessage(null, new FacesMessage("Alteração Efetuada!"));
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
         }
 
     }
     
-    public Funcionario buscarFuncionarioPeloCPF() {
-        FacesContext context = FacesContext.getCurrentInstance();
+    public Funcionario buscarFuncionarioPeloCPF(String cpf) {
+//        FacesContext context = FacesContext.getCurrentInstance();
         
         try {
             funcionario = funcionarioModel.buscarFuncionarioPeloCpf(cpf);
             return funcionario;
         } catch (Exception erro) {
             funcionario = null;
-            context.addMessage(null, new FacesMessage("Erro ao procurar!"));
+//            context.addMessage(null, new FacesMessage("Erro ao procurar!"));
         }
         return funcionario;
     }
     
-    public Funcionario buscarFuncionarioPeloCNH() {
-        FacesContext context = FacesContext.getCurrentInstance();
+    public Funcionario buscarFuncionarioPeloCNH(String cnh) {
+//        FacesContext context = FacesContext.getCurrentInstance();
         
         try {
             funcionario = funcionarioModel.buscarFuncionarioPelaCnh(cnh);
             return funcionario;
         } catch (Exception erro) {
             funcionario = null;
-            context.addMessage(null, new FacesMessage("Erro ao procurar!"));
+//            context.addMessage(null, new FacesMessage("Erro ao procurar!"));
         }
         return funcionario;
     }
     
-    public Funcionario buscarFuncionarioPeloRG() {
-        FacesContext context = FacesContext.getCurrentInstance();
+    public Funcionario buscarFuncionarioPeloRG(String rg) {
+//        FacesContext context = FacesContext.getCurrentInstance();
         
         try {
             funcionario = funcionarioModel.buscarFuncionarioPelaIdentidade(rg);
             return funcionario;
         } catch (Exception erro) {
             funcionario = null;
-            context.addMessage(null, new FacesMessage("Erro ao procurar!"));
+//            context.addMessage(null, new FacesMessage("Erro ao procurar!"));
         }
         return funcionario;
     }
 
     public List<Funcionario> listaTodos() {
-        FacesContext context = FacesContext.getCurrentInstance();
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
             listaFuncionario = funcionarioModel.buscaTodosOsFuncionarios();
             Collections.sort(listaFuncionario);
             funcionario = new Funcionario();
             return listaFuncionario;
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
         }
         return null;
     }
 
     public int totalDeMotoristas() {
-        FacesContext context = FacesContext.getCurrentInstance();
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
             listaFuncionario = funcionarioModel.buscaTodosOsFuncionarios();
 
@@ -146,13 +146,13 @@ public class ControllerFuncionarioSMBG {
             }
             return contador;
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
         }
         return 0;
     }
 
     public int totalDeCobradores() {
-        FacesContext context = FacesContext.getCurrentInstance();
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
             listaFuncionario = funcionarioModel.buscaTodosOsFuncionarios();
 
@@ -165,20 +165,20 @@ public class ControllerFuncionarioSMBG {
             }
             return contador;
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
         }
         return 0;
     }
     
     public static Funcionario buscarFuncionarioPeloCpfParaLogin(String cpf) {
-        FacesContext context = FacesContext.getCurrentInstance();
+//        FacesContext context = FacesContext.getCurrentInstance();
         
         try {
             return new FuncionarioModel().buscarFuncionarioPeloCpf(cpf);
              
         } catch (Exception erro) {
             
-            context.addMessage(null, new FacesMessage("Erro ao procurar!"));
+//            context.addMessage(null, new FacesMessage("Erro ao procurar!"));
         }
         return null;
     }

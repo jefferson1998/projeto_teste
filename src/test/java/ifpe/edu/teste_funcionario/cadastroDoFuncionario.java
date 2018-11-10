@@ -2,8 +2,10 @@ package ifpe.edu.teste_funcionario;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.hibernate.HibernateException;
 import org.junit.jupiter.api.Test;
 
+import ifpe.edu.smbg.controller.ControllerFuncionarioSMBG;
 import ifpe.edu.smbg.model.entity.Admissao;
 import ifpe.edu.smbg.model.entity.Conta;
 import ifpe.edu.smbg.model.entity.Endereco;
@@ -28,9 +30,9 @@ class cadastroDoFuncionario {
         ad.setNumeroDeFilhos(12);
         ad.setValorSalario(1200);
         ad.setConta(c);
-        f.setCpf("125.225.945/75");
+        f.setCpf("125.225.945/80");
         i.setNome("José");
-        i.setNumeroIdentidade("12");
+        i.setNumeroIdentidade("13");
         i.setNomeDaMae("Maria");
         i.setOrgaoEmissor("SDS");
         i.setDataDeEmissao("12/05/1998");
@@ -42,9 +44,20 @@ class cadastroDoFuncionario {
 	}
 	
 	private final Funcionario f = criandoFuncionario();
-	
-	@Test
+	private final ControllerFuncionarioSMBG cf = new ControllerFuncionarioSMBG();
+
+	@Test()
 	void testPersistindoFuncionario() {
+		cf.setFuncionario(f);
+		
+		try {
+			cf.cadastrarFuncionario();		
+			System.out.println("Cadastro efetuado!");
+		} catch (HibernateException he) {
+			System.out.println(he.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 
