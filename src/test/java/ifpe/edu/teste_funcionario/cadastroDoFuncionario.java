@@ -1,11 +1,9 @@
 package ifpe.edu.teste_funcionario;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.hibernate.HibernateException;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import ifpe.edu.smbg.controller.ControllerFuncionarioSMBG;
 import ifpe.edu.smbg.model.entity.Admissao;
 import ifpe.edu.smbg.model.entity.Conta;
@@ -36,7 +34,7 @@ private final ControllerFuncionarioSMBG cf = new ControllerFuncionarioSMBG();
         ad.setConta(c);
         f.setCpf("125.225.945/10");
         i.setNome("José");
-        i.setNumeroIdentidade("17");
+        i.setNumeroIdentidade("13");
         i.setNomeDaMae("Maria");
         i.setOrgaoEmissor("SDS");
         i.setDataDeEmissao("12/05/1998");
@@ -59,6 +57,11 @@ private final ControllerFuncionarioSMBG cf = new ControllerFuncionarioSMBG();
 			System.out.println(e.getMessage());
 		}
 		
+	}
+	
+	@AfterAll
+	void testLimpar() {
+		cf.removerFuncionario();
 	}
 
 }

@@ -21,11 +21,11 @@ public class FuncionarioModel {
     }
 
     public void atualizarFuncionario(Funcionario funcionario) throws Exception{
-//        if (buscarFuncionarioPeloCpf(funcionario.getCpf()) == null) {
+        if (buscarFuncionarioPeloCpf(funcionario.getCpf()) != null) {
             daoFuncionario.atualizar(funcionario);
-//        } else {
-//            throw new Exception("CPF já cadastrado!");
-//        }
+        } else {
+            throw new Exception("CPF já cadastrado!");
+        }
     }
 
     public void removerFuncionario(Funcionario funcionario) {
