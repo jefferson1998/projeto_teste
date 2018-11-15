@@ -75,6 +75,7 @@ public class ControllerFuncionarioSMBG {
             listaTodos();
 //            context.addMessage(null, new FacesMessage("Alteração Efetuada!"));
         } catch (Exception ex) {
+        	System.out.println(ex.getMessage());
 //            context.addMessage(null, new FacesMessage(ex.getMessage()));
         }
 

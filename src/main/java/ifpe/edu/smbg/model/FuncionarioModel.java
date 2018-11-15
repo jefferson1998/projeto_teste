@@ -21,11 +21,11 @@ public class FuncionarioModel {
     }
 
     public void atualizarFuncionario(Funcionario funcionario) throws Exception{
-        if (buscarFuncionarioPeloCpf(funcionario.getCpf()) == null) {
+//        if (buscarFuncionarioPeloCpf(funcionario.getCpf()) == null) {
             daoFuncionario.atualizar(funcionario);
-        } else {
-            throw new Exception("CPF já cadastrado!");
-        }
+//        } else {
+//            throw new Exception("CPF já cadastrado!");
+//        }
     }
 
     public void removerFuncionario(Funcionario funcionario) {
@@ -40,12 +40,20 @@ public class FuncionarioModel {
         return ((FuncionarioDAO) daoFuncionario).buscarPeloCpf(cpf);
     }
 
-    public Funcionario buscarFuncionarioPelaIdentidade(String numeroIdentidade) {
-        return ((FuncionarioDAO) daoFuncionario).buscarPelaIdentidade(numeroIdentidade);
+    public Funcionario buscarFuncionarioPelaIdentidade(String numeroIdentidade) throws Exception {
+    	if(numeroIdentidade == null) {
+    		throw new Exception("Número do RG vazio!");
+    	} else {
+            return ((FuncionarioDAO) daoFuncionario).buscarPelaIdentidade(numeroIdentidade);
+    	}
     }
 
-    public Funcionario buscarFuncionarioPelaCnh(String cnh) {
-        return ((FuncionarioDAO) daoFuncionario).buscarPelaCnh(cnh);
+    public Funcionario buscarFuncionarioPelaCnh(String cnh) throws Exception  {
+    	if (cnh == null) {
+    		throw new Exception("CNH vazia!");
+    	} else {
+            return ((FuncionarioDAO) daoFuncionario).buscarPelaCnh(cnh);
+    	}
     }
 
 }

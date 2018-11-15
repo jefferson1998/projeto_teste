@@ -3,6 +3,7 @@ package ifpe.edu.teste_funcionario;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.hibernate.HibernateException;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import ifpe.edu.smbg.controller.ControllerFuncionarioSMBG;
@@ -13,9 +14,12 @@ import ifpe.edu.smbg.model.entity.Funcionario;
 import ifpe.edu.smbg.model.entity.Identidade;
 
 class cadastroDoFuncionario {
-
-	public Funcionario criandoFuncionario() {
-		Funcionario f = new Funcionario();
+	
+static 	Funcionario f = new Funcionario();
+private final ControllerFuncionarioSMBG cf = new ControllerFuncionarioSMBG();
+	
+	@BeforeAll
+	public static void criandoFuncionario() {
 		Conta c = new Conta();
         Identidade i = new Identidade();
         Endereco e = new Endereco("SP", 0, "Magano", "123");
@@ -30,9 +34,9 @@ class cadastroDoFuncionario {
         ad.setNumeroDeFilhos(12);
         ad.setValorSalario(1200);
         ad.setConta(c);
-        f.setCpf("125.225.945/80");
+        f.setCpf("125.225.945/10");
         i.setNome("José");
-        i.setNumeroIdentidade("13");
+        i.setNumeroIdentidade("17");
         i.setNomeDaMae("Maria");
         i.setOrgaoEmissor("SDS");
         i.setDataDeEmissao("12/05/1998");
@@ -40,11 +44,7 @@ class cadastroDoFuncionario {
         f.setFuncionarioIdentidade(i);
         f.setFuncionarioEndereco(e);
         f.setAdmissao(ad);
-        return f;
 	}
-	
-	private final Funcionario f = criandoFuncionario();
-	private final ControllerFuncionarioSMBG cf = new ControllerFuncionarioSMBG();
 
 	@Test()
 	void testPersistindoFuncionario() {

@@ -46,7 +46,7 @@ class camposDoFuncionario {
 	
 	@Test
 	void testCampoCPF() {
-		assertNull(f.getCpf(), "CPF null");
+//		assertNull(f.getCpf(), "CPF null");
 		assertNotNull("CPF não nulo", f.getCpf());
 
 	}
