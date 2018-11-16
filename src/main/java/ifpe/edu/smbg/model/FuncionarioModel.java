@@ -24,7 +24,7 @@ public class FuncionarioModel {
         if (buscarFuncionarioPeloCpf(funcionario.getCpf()) != null) {
             daoFuncionario.atualizar(funcionario);
         } else {
-            throw new Exception("CPF já cadastrado!");
+            throw new Exception("Funcionario não cadastrado!");
         }
     }
 
