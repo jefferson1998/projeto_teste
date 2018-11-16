@@ -13,7 +13,7 @@ class atualizacaoDoFuncionario {
 
 	@BeforeAll
 	public static void criandoFuncionario() {
-		f = cf.buscarFuncionarioPeloCPF("125.225.945/10");
+		f = cf.buscarFuncionarioPeloCPF("125.225.945/00");
 	}
 	
 	@Test()

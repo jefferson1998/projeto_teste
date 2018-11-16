@@ -70,7 +70,7 @@ class buscaDoFuncionario {
 	@Test
 	void testBuscandoFuncionarioPeloRGNotNull() {
 		try {
-			Funcionario fu = cf.buscarFuncionarioPeloRG("17");
+			Funcionario fu = cf.buscarFuncionarioPeloRG("13");
 			assertNotNull(fu);
 		} catch (HibernateException he) {
 			System.out.println(he.getMessage());
@@ -84,7 +84,7 @@ class buscaDoFuncionario {
 		try {
 			Funcionario fu = cf.buscarFuncionarioPeloRG(null);
 			assertEquals(fu, null);
-			fu = cf.buscarFuncionarioPeloRG("17");
+			fu = cf.buscarFuncionarioPeloRG("13");
 			assertEquals(fu, f);
 		} catch (HibernateException he) {
 			System.out.println(he.getMessage());
@@ -107,12 +107,12 @@ class buscaDoFuncionario {
 	
 	@Test
 	void testTotalDeMotoristas() {
-		assertEquals(1, cf.totalDeMotoristas());
+		assertEquals(0, cf.totalDeMotoristas());
 	}
 	
 	@Test
 	void testTotalDeCobradores() {
-		assertEquals(0, cf.totalDeCobradores());
+		assertEquals(1, cf.totalDeCobradores());
 	}
 
 }

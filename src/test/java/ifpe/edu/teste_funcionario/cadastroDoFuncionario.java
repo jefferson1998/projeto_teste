@@ -32,7 +32,7 @@ private final ControllerFuncionarioSMBG cf = new ControllerFuncionarioSMBG();
         ad.setNumeroDeFilhos(12);
         ad.setValorSalario(1200);
         ad.setConta(c);
-        f.setCpf("125.225.945/10");
+        f.setCpf("125.225.945/00");
         i.setNome("José");
         i.setNumeroIdentidade("13");
         i.setNomeDaMae("Maria");
@@ -59,9 +59,4 @@ private final ControllerFuncionarioSMBG cf = new ControllerFuncionarioSMBG();
 		
 	}
 	
-	@AfterAll
-	void testLimpar() {
-		cf.removerFuncionario();
-	}
-
 }

@@ -15,7 +15,7 @@ class remocaoDoFuncionario {
 
 	@BeforeAll
 	public static void criandoFuncionario() {
-		f = cf.buscarFuncionarioPeloCPF("125.225.945/10");
+		f = cf.buscarFuncionarioPeloCPF("125.225.945/00");
 		cf.setFuncionario(f);
 	}
 	
@@ -23,7 +23,7 @@ class remocaoDoFuncionario {
 	void testRemoverFuncionario() {
 		try {
 			cf.removerFuncionario();	
-			assertNull(cf.buscarFuncionarioPeloCPF("125.225.945/10"));
+			assertNull(cf.buscarFuncionarioPeloCPF("125.225.945/00"));
 		} catch (HibernateException he) {
 			System.out.println(he.getMessage());
 		} catch (Exception e) {
