@@ -27,7 +27,7 @@ public class ControllerFuncionarioSMBG {
     private Funcionario funcionario;
     private FuncionarioModel funcionarioModel;
     private List<Funcionario> listaFuncionario;
-    private String cpf,rg, CNHS;
+    private String cpf,rg, cnh;
 
     public ControllerFuncionarioSMBG() {
         funcionario = new Funcionario();
