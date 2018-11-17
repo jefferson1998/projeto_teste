@@ -1,7 +1,6 @@
 package ifpe.edu.teste_funcionario;
 
 import org.hibernate.HibernateException;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ifpe.edu.smbg.controller.ControllerFuncionarioSMBG;

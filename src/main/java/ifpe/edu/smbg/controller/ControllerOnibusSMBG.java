@@ -86,10 +86,10 @@ public class ControllerOnibusSMBG {
         return null;
     }
     
-    public Onibus buscarOnibusPelaPlaca() {
+    public Onibus buscarOnibusPelaPlaca(String placa) {
 //        FacesContext context = FacesContext.getCurrentInstance();
         try {
-            onibus = onibusModel.buscarPelaOnibusPlaca(buscarOnibus);
+            onibus = onibusModel.buscarPelaOnibusPlaca(placa);
 //            context.addMessage(null, new FacesMessage("Buscar efetuada!"));
             return onibus;
         } catch (Exception ex) {
@@ -98,10 +98,10 @@ public class ControllerOnibusSMBG {
         }
     }
 
-     public Onibus buscarOnibusPeloChassi() {
+     public Onibus buscarOnibusPeloChassi(String chassis) {
 //        FacesContext context = FacesContext.getCurrentInstance();
         try {
-            onibus = onibusModel.buscarPeloOnibusChassis(buscarOnibus);
+            onibus = onibusModel.buscarPeloOnibusChassis(chassis);
 //            context.addMessage(null, new FacesMessage("Buscar efetuada!"));
             return onibus;
         } catch (Exception ex) {
@@ -110,10 +110,10 @@ public class ControllerOnibusSMBG {
         }
     }
      
-     public Onibus buscarOnibusPeloCodigoRenavam() {
+     public Onibus buscarOnibusPeloCodigoRenavam(String codigoRenavam) {
 //        FacesContext context = FacesContext.getCurrentInstance();
         try {
-            onibus = onibusModel.buscarPeloOnibusPeloCodigoRenavam(buscarOnibus);
+            onibus = onibusModel.buscarPeloOnibusPeloCodigoRenavam(codigoRenavam);
 //            context.addMessage(null, new FacesMessage("Buscar efetuada!"));
             return onibus;
         } catch (Exception ex) {

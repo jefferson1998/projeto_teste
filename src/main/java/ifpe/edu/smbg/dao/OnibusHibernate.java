@@ -22,6 +22,7 @@ public class OnibusHibernate implements OnibusDAO {
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
+            System.out.println(e.getMessage());
         } finally {
             em.close();
         }
