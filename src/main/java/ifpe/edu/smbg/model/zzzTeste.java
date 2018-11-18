@@ -5,7 +5,7 @@
  */
 package ifpe.edu.smbg.model;
 
-import ifpe.edu.smbg.dao.GeradorDeEntityManager;
+import ifpe.edu.smbg.model.dao.GeradorDeEntityManager;
 import ifpe.edu.smbg.model.entity.Admissao;
 import ifpe.edu.smbg.model.entity.Conta;
 import ifpe.edu.smbg.model.entity.Endereco;
