@@ -1,8 +1,8 @@
 package ifpe.edu.smbg.model;
 
-import ifpe.edu.smbg.model.dao.DAO;
-import ifpe.edu.smbg.model.dao.FuncionarioDAO;
-import ifpe.edu.smbg.model.dao.FuncionarioHibernate;
+import ifpe.edu.smbg.dao.DAO;
+import ifpe.edu.smbg.dao.FuncionarioDAO;
+import ifpe.edu.smbg.dao.FuncionarioHibernate;
 import ifpe.edu.smbg.model.entity.Funcionario;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class FuncionarioModel {
     }
 
     public void atualizarFuncionario(Funcionario funcionario) throws Exception{
-        if (buscarFuncionarioPeloCpf(funcionario.getCpf()) == null) {
+        if (buscarFuncionarioPeloCpf(funcionario.getCpf()) != null) {
             daoFuncionario.atualizar(funcionario);
         } else {
             throw new Exception("CPF já cadastrado!");
@@ -40,12 +40,20 @@ public class FuncionarioModel {
         return ((FuncionarioDAO) daoFuncionario).buscarPeloCpf(cpf);
     }
 
-    public Funcionario buscarFuncionarioPelaIdentidade(String numeroIdentidade) {
-        return ((FuncionarioDAO) daoFuncionario).buscarPelaIdentidade(numeroIdentidade);
+    public Funcionario buscarFuncionarioPelaIdentidade(String numeroIdentidade) throws Exception {
+    	if(numeroIdentidade == null) {
+    		throw new Exception("Número do RG vazio!");
+    	} else {
+            return ((FuncionarioDAO) daoFuncionario).buscarPelaIdentidade(numeroIdentidade);
+    	}
     }
 
-    public Funcionario buscarFuncionarioPelaCnh(String cnh) {
-        return ((FuncionarioDAO) daoFuncionario).buscarPelaCnh(cnh);
+    public Funcionario buscarFuncionarioPelaCnh(String cnh) throws Exception  {
+    	if (cnh == null) {
+    		throw new Exception("CNH vazia!");
+    	} else {
+            return ((FuncionarioDAO) daoFuncionario).buscarPelaCnh(cnh);
+    	}
     }
 
 }

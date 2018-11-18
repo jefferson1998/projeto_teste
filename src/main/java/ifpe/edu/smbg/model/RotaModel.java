@@ -1,8 +1,8 @@
 package ifpe.edu.smbg.model;
 
-import ifpe.edu.smbg.model.dao.DAO;
-import ifpe.edu.smbg.model.dao.RotaDAO;
-import ifpe.edu.smbg.model.dao.RotaHibernate;
+import ifpe.edu.smbg.dao.DAO;
+import ifpe.edu.smbg.dao.RotaDAO;
+import ifpe.edu.smbg.dao.RotaHibernate;
 import ifpe.edu.smbg.model.entity.Rota;
 
 import java.util.List;

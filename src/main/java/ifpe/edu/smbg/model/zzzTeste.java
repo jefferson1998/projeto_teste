@@ -5,7 +5,7 @@
  */
 package ifpe.edu.smbg.model;
 
-import ifpe.edu.smbg.model.dao.GeradorDeEntityManager;
+import ifpe.edu.smbg.dao.GeradorDeEntityManager;
 import ifpe.edu.smbg.model.entity.Admissao;
 import ifpe.edu.smbg.model.entity.Conta;
 import ifpe.edu.smbg.model.entity.Endereco;
@@ -24,7 +24,13 @@ public class zzzTeste {
     public static void main(String[] args) {
         
         EntityManager em = GeradorDeEntityManager.getEntityManager();
+        System.out.println("Pegou");
+        
+        
 
+	        Conta c = new Conta();
+	        c.setNumeroAgencia("12");
+	        c.setNumeroConta("15");
             Admissao ad = new Admissao();
             ad.setDataAdmissao("15/05/1998");
             ad.setFuncao("Motorista");
@@ -33,19 +39,14 @@ public class zzzTeste {
             ad.setNumeroDeFilhos(12);
             ad.setValorSalario(1200);
             
-            Conta c = new Conta();
-            c.setNumeroAgencia("12");
-            c.setNumeroConta("15");
             ad.setConta(c);
 
-            System.out.println("Persistiu Admissao");
             
             Identidade i = new Identidade();
             Endereco e = new Endereco("SP", 0, "Magano", "123");
             Funcionario f = new Funcionario();
             
-            f.setAdmissao(ad);
-            f.setCpf("125.225.945/70");
+            f.setCpf("125.225.945/75");
             i.setNome("José");
             i.setNumeroIdentidade("12");
             i.setNomeDaMae("Maria");
@@ -67,7 +68,7 @@ public class zzzTeste {
            
             FuncionarioModel fm =  new FuncionarioModel();
             Funcionario f1;
-            
+//            
             f1 = (Funcionario) em.createQuery("from Funcionario WHERE cpf = ?").setParameter(1, "125.225.945/70").getSingleResult();
             
             System.out.println(f1);

@@ -40,84 +40,84 @@ public class ControllerOnibusSMBG {
     }
 
     public void cadastrarOnibus() {
-        FacesContext context = FacesContext.getCurrentInstance();
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
             onibusModel.cadastrarOnibus(onibus);
             listaTodos();
             onibus = new Onibus();
-        context.addMessage(null, new FacesMessage("Cadastro Efetuado!"));
+//        context.addMessage(null, new FacesMessage("Cadastro Efetuado!"));
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
         }
     }
 
     public void alterarOnibus() {
-        FacesContext context = FacesContext.getCurrentInstance();
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
             onibusModel.atualizarOnibus(onibus);
             listaTodos();
             onibus = new Onibus();
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
         }
     }
 
     public void removerOnibus() {
-        FacesContext context = FacesContext.getCurrentInstance();
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
             onibusModel.removerOnibus(onibus);
             listaTodos();
             onibus = new Onibus();
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
         }
     }
 
     public List<Onibus> listaTodos() {
-        FacesContext context = FacesContext.getCurrentInstance();
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
             onibusModel = new OnibusModel();
             listaOnibus = onibusModel.listarTodosOsOnibus();
             Collections.sort(listaOnibus);
             return listaOnibus;
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
         }
         return null;
     }
     
-    public Onibus buscarOnibusPelaPlaca() {
-        FacesContext context = FacesContext.getCurrentInstance();
+    public Onibus buscarOnibusPelaPlaca(String placa) {
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
-            onibus = onibusModel.buscarPelaOnibusPlaca(buscarOnibus);
-            context.addMessage(null, new FacesMessage("Buscar efetuada!"));
+            onibus = onibusModel.buscarPelaOnibusPlaca(placa);
+//            context.addMessage(null, new FacesMessage("Buscar efetuada!"));
             return onibus;
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
             return null;
         }
     }
 
-     public Onibus buscarOnibusPeloChassi() {
-        FacesContext context = FacesContext.getCurrentInstance();
+     public Onibus buscarOnibusPeloChassi(String chassis) {
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
-            onibus = onibusModel.buscarPeloOnibusChassis(buscarOnibus);
-            context.addMessage(null, new FacesMessage("Buscar efetuada!"));
+            onibus = onibusModel.buscarPeloOnibusChassis(chassis);
+//            context.addMessage(null, new FacesMessage("Buscar efetuada!"));
             return onibus;
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
             return null;
         }
     }
      
-     public Onibus buscarOnibusPeloCodigoRenavam() {
-        FacesContext context = FacesContext.getCurrentInstance();
+     public Onibus buscarOnibusPeloCodigoRenavam(String codigoRenavam) {
+//        FacesContext context = FacesContext.getCurrentInstance();
         try {
-            onibus = onibusModel.buscarPeloOnibusPeloCodigoRenavam(buscarOnibus);
-            context.addMessage(null, new FacesMessage("Buscar efetuada!"));
+            onibus = onibusModel.buscarPeloOnibusPeloCodigoRenavam(codigoRenavam);
+//            context.addMessage(null, new FacesMessage("Buscar efetuada!"));
             return onibus;
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(ex.getMessage()));
+//            context.addMessage(null, new FacesMessage(ex.getMessage()));
             return null;
         }
     }
