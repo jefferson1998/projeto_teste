@@ -1,5 +1,7 @@
 package ifpe.edu.teste_funcionario;
 
+import static org.junit.Assert.assertNotNull;
+
 import org.hibernate.HibernateException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -56,6 +58,13 @@ private final ControllerFuncionarioSMBG cf = new ControllerFuncionarioSMBG();
 			System.out.println(e.getMessage());
 		}
 		
+	}
+	
+	@Test()
+	void testExlcuirFuncionario() {
+		assertNotNull(cf.buscarFuncionarioPeloCPF("125.225.945/00"));
+		cf.setFuncionario(cf.buscarFuncionarioPeloCPF("125.225.945/00"));
+		cf.removerFuncionario();
 	}
 	
 }
